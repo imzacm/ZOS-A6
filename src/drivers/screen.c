@@ -1,4 +1,4 @@
-#include "../header.h"
+#include <header.h>
 
 unsigned short *textmemptr;
 int attrib = 0x0F;
@@ -29,7 +29,7 @@ void move_csr(void) {
 
 void clear() {
   unsigned blank;
-  blank 0x20 | (attrib << 8);
+  blank = 0x20 | (attrib << 8);
   for (int i = 0; i < 25; i++) {
     memsetw(textmemptr + i * 80, blank, 80);
   }

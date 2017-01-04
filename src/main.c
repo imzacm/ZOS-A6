@@ -1,9 +1,4 @@
-#include "header.h"
-
-int main() {
-  init();
-  home();
-}
+#include <header.h>
 
 void init() {
   print("Starting OS ...");
@@ -15,6 +10,11 @@ void init() {
   initVideo();
 }
 
+void drawHome(int optionSelected) {
+  //Draws the home screen with the correct option number selected
+  print("");
+}
+
 void home() {
   clearScreen();
   print("Welcome to ZOS-A6");
@@ -23,7 +23,8 @@ void home() {
   drawHome(1);
 }
 
-void drawHome(int optionSelected) {
-  //Draws the home screen with the correct option number selected
-  print("")
+int main() {
+  init();
+  home();
+  for (;;);
 }

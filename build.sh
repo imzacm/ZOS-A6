@@ -2,24 +2,35 @@
 export PREFIX="$HOME/opt/cross/bin"
 export TARGET=i686-elf
 export cc="$PREFIX/$TARGET"
+
+mkdir working
+mkdir out
+rm -rf working/*
+rm -rf out/*
+
 #compile asm
 for f in src/*.asm
 do
-  nasm -f aout -o working/$(echo $f | cut -f 1 -d '.').o $f
+  file=${f##*/}
+  nasm -f aout -o working/$(echo $file | cut -f 1 -d '.').o $f
 done
 #compile C
-cargs="-Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -c"
+cargs="-Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -c -Wno-unused-value -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-pointer-sign -I./src/include"
 for f in src/*/*.c
 do
-  $cc-gcc $cargs -o working/$(echo $f | cut -f 1 -d '.').o $f
+  file=${f##*/}
+  $cc-gcc $cargs -o working/$(echo $file | cut -f 1 -d '.').o $f
 done
 for f in src/*.c
 do
-  $cc-gcc $cargs -o working/$(echo $f | cut -f 1 -d '.').o $f
+  file=${f##*/}
+  $cc-gcc $cargs -o working/$(echo $file | cut -f 1 -d '.').o $f
 done
 #link
 shopt -s nullglob
 files=(working/*.o)
-$cc-ld -T src/link.ld -o $files
+$cc-ld -T src/link.ld -o out/kernel.bin $files
 
 #build iso
+cp out/kernel.bin out/iso/boot/kernel.bin
+grub-mkrescue /usr/lib/grub/i386-pc -o out/ZOS-A6.iso src/iso

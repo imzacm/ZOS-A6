@@ -1,4 +1,4 @@
-#include "../header.h"
+#include <header.h>
 
 extern void isr0();
 extern void isr1();

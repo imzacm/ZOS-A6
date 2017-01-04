@@ -1,4 +1,4 @@
-#include "../header.h"
+#include <header.h>
 
 struct idt_entry {
   unsigned short base_lo;

@@ -9,7 +9,7 @@ do
 done
 #compile C
 cargs="-Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -c"
-for f in src/drivers/*.c
+for f in src/*/*.c
 do
   $cc-gcc $cargs -o working/$(echo $f | cut -f 1 -d '.').o $f
 done

@@ -8,6 +8,10 @@ int main() {
 void init() {
   print("Starting OS ...");
   //Set up keyboard, isr, etc
+  gdt_install();
+  idt_install();
+  irq_install();
+  __asm__ __volatile__ ("sti");
   initVideo();
 }
 

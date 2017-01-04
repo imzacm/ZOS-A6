@@ -2,11 +2,8 @@ ZOS-A6
 
 Attempt 6
 
-Written in: asm, C, JS
-
-convert JS to C and then compile
+Written in: asm, C
 
 todo
 ----
 create the base OS
-build JS interpreter in OS

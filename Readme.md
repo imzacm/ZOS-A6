@@ -8,4 +8,4 @@ todo
 ----
 create the base OS
 
-SRC -- http://www.osdever.net/bkerndev/Docs/basickernel.htm
+SRC -- http://www.osdever.net/bkerndev/Docs/gdt.htm

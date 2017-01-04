@@ -1,3 +1,5 @@
+#include "header.h"
+
 int main() {
   init();
   home();
@@ -6,6 +8,7 @@ int main() {
 void init() {
   print("Starting OS ...");
   //Set up keyboard, isr, etc
+  initVideo();
 }
 
 void home() {

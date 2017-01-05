@@ -3,6 +3,9 @@ ENTRY(start)
 phys = 0x00100000;
 SECTIONS
 {
+  .mboot phys : AT(ADDR(.mboot)) {
+    *(.mboot)
+  }
   .text phys : AT(phys) {
     code = .;
     *(.text)

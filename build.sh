@@ -7,6 +7,7 @@ mkdir working
 mkdir out
 rm -rf working/*
 rm -rf out/*
+rm -rf src/iso/boot/kernel.bin
 
 #compile asm
 for f in src/*.asm
@@ -32,5 +33,5 @@ files=(working/*.o)
 $cc-ld -T src/link.ld -o out/kernel.bin $files
 
 #build iso
-cp out/kernel.bin out/iso/boot/kernel.bin
+cp out/kernel.bin src/iso/boot/kernel.bin
 grub-mkrescue /usr/lib/grub/i386-pc -o out/ZOS-A6.iso src/iso
